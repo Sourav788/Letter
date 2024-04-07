@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Letter</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background-color: #f8f8f8;
+    transition: background-color 1s ease; /* Smooth background color transition */
+  }
+  .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    max-width: 1200px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  .letter {
+    flex: 1;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+  }
+  .letter h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  .letter p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .our-moments {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+  .moment {
+    margin: 10px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .moment img {
+    width: 200px;
+    /* height: 200px; */
+    border-radius: 10px;
+    border: 5px solid #ffcccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, top 0.3s ease, left 0.3s ease;
+  }
+  .moment:hover img {
+    transform: scale(1.1);
+    top: calc(50% - 110px);
+    left: calc(50% - 110px);
+  }
+  .moment img.zoom {
+    transform: scale(1.5);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+  .moment-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 10px solid #ffcccc;
+    border-radius: 10px;
+  }
+  /* .raindrop {
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    animation: rain 0.5s infinite linear;
+    z-index: 0;
+  } */
+
+  .raindrop1 {
+    position: absolute;
+    font-size: 24px;
+    color: red;
+    animation: rain 7s infinite linear;
+    z-index: 0;
+    left: 10%;
+    transform: translateX(-50%);
+    top: -20px;
+  }
+
+  .raindrop2 {
+    position: absolute;
+    font-size: 24px;
+    color: red;
+    animation: rain 6s infinite linear;
+    z-index: 0;
+    left: 20%;
+    transform: translateX(-50%);
+    top: -20px;
+  }
+
+  .raindrop3 {
+    position: absolute;
+    font-size: 24px;
+    color: red;
+    animation: rain 5s infinite linear;
+    z-index: 0;
+    left: 30%;
+    transform: translateX(-50%);
+    top: -20px;
+  }
+
+  .raindrop4 {
+    position: absolute;
+    font-size: 24px;
+    color: red;
+    animation: rain 4s infinite linear;
+    z-index: 0;
+    left: 40%;
+    transform: translateX(-50%);
+    top: -20px;
+  }
+
+  .raindrop5 {
+    position: absolute;
+    font-size: 24px;
+    color: red;
+    animation: rain 3s infinite linear;
+    z-index: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -20px;
+  }
+
+  .raindrop6 {
+    position: absolute;
+    font-size: 24px;
+    color: red;
+    animation: rain 4s infinite linear;
+    z-index: 0;
+    left: 60%;
+    transform: translateX(-50%);
+    top: -20px;
+  }
+
+  .raindrop7 {
+    position: absolute;
+    font-size: 24px;
+    color: red;
+    animation: rain 5s infinite linear;
+    z-index: 0;
+    left: 70%;
+    transform: translateX(-50%);
+    top: -20px;
+  }
+
+  .raindrop8 {
+    position: absolute;
+    font-size: 24px;
+    color: red;
+    animation: rain 6s infinite linear;
+    z-index: 0;
+    left: 80%;
+    transform: translateX(-50%);
+    top: -20px;
+  }
+
+  .raindrop10 {
+    position: absolute;
+    font-size: 24px;
+    color: red;
+    animation: rain 7s infinite linear;
+    z-index: 0;
+    left: 100%;
+    transform: translateX(-50%);
+    top: -20px;
+  }
+
+  /* .heart-rain {
+    position: absolute;
+    font-size: 24px;
+    color: red;
+    animation: heartFall 1s infinite linear;
+    z-index: 0;
+  } */
+
+  /* .raindrop1 {
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    animation: rain 0.5s infinite linear;
+    z-index: 0;
+    left: 10%;
+    transform: translateX(-50%);
+    top: -20px;
+  } */
+
+  @keyframes rain {
+    0% {
+      transform: translateY(-50px);
+    }
+    100% {
+      transform: translateY(100vh);
+    }
+  }
+</style>
+</head>
+<body>
+<audio id="bgMusic" src="Romantic Music NO Copyright.mp3" preload="auto" loop></audio>
+<audio id="momentMusic1" src="Agar Tum Mi Jao.mp4" preload="auto"></audio>
+<audio id="momentMusic2" src="Mareez  E  Ishq  ZiD.mp3" preload="auto"></audio>
+<audio id="momentMusic3" src="Tujhse Naraz Nahi Zindagi  Sanam.mp3" preload="auto"></audio>
+<div class="container">
+  <div class="letter">
+    <h1>My Dearest Love,</h1>
+    <p>I wanted to take a moment to express the depth of my feelings for you. With each passing day, my love for you grows stronger and deeper. Your presence in my life has brought me more joy and happiness than I ever thought possible.</p>
+    <p>When I look into your eyes, I see a reflection of my soul, and I am reminded of how truly blessed I am to have you by my side. Your love fills my heart with warmth and light, and I am grateful for every moment we share together.</p>
+    <p>From the way you laugh to the way you hold my hand, every little thing about you captivates me. You are my inspiration, my confidante, and my best friend. I cherish every memory we've created and look forward to a lifetime of making more.</p>
+    <p>Thank you for being the most amazing partner anyone could ask for. I love you more than words can express, and I promise to cherish and adore you for all eternity.</p>
+    <p class="signature">Forever Yours,</p>
+    <p class="signature">Golu</p>
+  </div>
+  <div class="our-moments">
+    <div class="moment" onmouseover="playMomentMusic('momentMusic1')" onmouseout="stopMomentMusic('momentMusic1')">
+      <img src="moment1.jpg" alt="Moment 1">
+      <div class="moment-frame"></div>
+    </div>
+    <div class="moment" onmouseover="playMomentMusic('momentMusic2')" onmouseout="stopMomentMusic('momentMusic2')">
+      <img src="moment2.jpg" alt="Moment 2">
+      <div class="moment-frame"></div>
+    </div>
+    <div class="moment" onmouseover="playMomentMusic('momentMusic3')" onmouseout="stopMomentMusic('momentMusic3')">
+      <img src="moment3.jpg" alt="Moment 3">
+      <div class="moment-frame"></div>
+    </div>
+    <!-- Add more moments as needed -->
+    <div class="raindrop1">&#10084;</div>
+    <div class="raindrop2">&#10084;</div>
+    <div class="raindrop3">&#10084;</div>
+    <div class="raindrop4">&#10084;</div>
+    <div class="raindrop5">&#10084;</div>
+    <div class="raindrop6">&#10084;</div>
+    <div class="raindrop7">&#10084;</div>
+    <div class="raindrop8">&#10084;</div>
+    <div class="raindrop9">&#10084;</div>
+    <div class="raindrop10">&#10084;</div>
+</div>
+</div>
+<script>
+  const bgMusic = document.getElementById('bgMusic');
+  const momentMusics = {
+    'momentMusic1': document.getElementById('momentMusic1'),
+    'momentMusic2': document.getElementById('momentMusic2'),
+    'momentMusic3': document.getElementById('momentMusic3')
+  };
+
+  bgMusic.volume = 0.5; // Set default background music volume
+
+  bgMusic.play();
+
+  setInterval(changeBackground, 7000); // Change background color every 7 seconds
+  setInterval(playHeartRain, 300); // Play heart rain animation
+
+  function changeBackground() {
+    const randomColor = getRandomColor();
+    document.body.style.backgroundColor = randomColor;
+  }
+
+  function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
+  function playMomentMusic(id) {
+    bgMusic.volume = 0.1; // Set background music volume to 10%
+    momentMusics[id].currentTime = 0;
+    momentMusics[id].play();
+  }
+
+  function stopMomentMusic(id) {
+    bgMusic.volume = 0.5; // Reset background music volume
+    momentMusics[id].pause();
+  }
+
+  function playHeartRain() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    heart.style.animationDuration = Math.random() * 2 + 1 + 's';
+    document.body.appendChild(heart);
+    setTimeout(() => {
+      heart.remove();
+    }, 3000);
+  }
+</script>
+</body>
+</html>
